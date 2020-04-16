@@ -52,8 +52,19 @@ class PrintLinkedListByTailNode
             $stack[] = $node;
             $node = $node->next;
         }
-        for ($i = count($stack) - 1; $i >= 0; $i--) {
-            return $stack[$i];
+        $length = count($stack);
+        for ($i = $length - 1; $i >= 0; $i--) {
+            var_dump($stack[$i]);
         }
+
+        return true;
     }
 }
+
+//test
+$t = new PrintLinkedListByTailNode();
+$node = new Node(0);
+$node->next = new Node(1);
+$node->next->next = new Node(2);
+
+$r = $t->printByTailNode($node);
