@@ -44,6 +44,9 @@ class PrintLinkedListByTailNode
      */
     public function printByTailNode(Node $head)
     {
+        if ($head === null) {
+            return false;
+        }
         //数组模拟栈行为
         $stack = [];
         $stack[] = $head;
@@ -54,10 +57,20 @@ class PrintLinkedListByTailNode
         }
         $length = count($stack);
         for ($i = $length - 1; $i >= 0; $i--) {
-            var_dump($stack[$i]);
+            var_dump($stack[$i]->val);
         }
 
         return true;
+    }
+
+    public function recursively(Node $head)
+    {
+        if ($head !== null) {
+            if ($head->next !== null) {
+                $this->recursively($head->next);
+            }
+            var_dump($head->val);
+        }
     }
 }
 
@@ -67,4 +80,5 @@ $node = new Node(0);
 $node->next = new Node(1);
 $node->next->next = new Node(2);
 
-$r = $t->printByTailNode($node);
+$t->recursively($node);
+//$t->printByTailNode($node);
